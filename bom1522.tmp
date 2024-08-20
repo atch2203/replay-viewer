@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://46wkdktbgqox"]
-
-[ext_resource type="ArrayMesh" uid="uid://cdxlwys7lvbh7" path="res://bomb.obj" id="2_vmdqe"]
-
-[node name="Bomb" type="Node3D"]
-
-[node name="Bomb" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.393672, -0.482762, -0.7452)
-mesh = ExtResource("2_vmdqe")
