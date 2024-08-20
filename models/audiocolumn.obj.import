@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cso2y2pmrc2m1"
+path="res://.godot/imported/audiocolumn.obj-6e94aa023fe7b2c287ce63607df7ddec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/audiocolumn.obj-6e94aa023fe7b2c287ce63607df7ddec.mesh"]
+
+source_file="res://models/audiocolumn.obj"
+dest_files=["res://.godot/imported/audiocolumn.obj-6e94aa023fe7b2c287ce63607df7ddec.mesh", "res://.godot/imported/audiocolumn.obj-6e94aa023fe7b2c287ce63607df7ddec.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

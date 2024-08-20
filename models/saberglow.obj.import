@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://l01gjhgi5a1d"
+path="res://.godot/imported/saberglow.obj-de75da6a67d5b7adf3f13bc61f0186da.mesh"
+
+[deps]
+
+files=["res://.godot/imported/saberglow.obj-de75da6a67d5b7adf3f13bc61f0186da.mesh"]
+
+source_file="res://models/saberglow.obj"
+dest_files=["res://.godot/imported/saberglow.obj-de75da6a67d5b7adf3f13bc61f0186da.mesh", "res://.godot/imported/saberglow.obj-de75da6a67d5b7adf3f13bc61f0186da.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

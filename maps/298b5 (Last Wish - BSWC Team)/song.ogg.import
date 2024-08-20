@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://t7jvw5d00dt4"
+path="res://.godot/imported/song.ogg-5c98176dcae5ba9ff53187809cc381ab.oggvorbisstr"
+
+[deps]
+
+source_file="res://maps/298b5 (Last Wish - BSWC Team)/song.ogg"
+dest_files=["res://.godot/imported/song.ogg-5c98176dcae5ba9ff53187809cc381ab.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

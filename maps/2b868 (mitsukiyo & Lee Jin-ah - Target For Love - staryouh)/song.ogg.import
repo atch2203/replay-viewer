@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1d8rhrtgqsjs"
+path="res://.godot/imported/song.ogg-7a6c48c30e5011f1a67b4ba4dc8abbce.oggvorbisstr"
+
+[deps]
+
+source_file="res://maps/2b868 (mitsukiyo & Lee Jin-ah - Target For Love - staryouh)/song.ogg"
+dest_files=["res://.godot/imported/song.ogg-7a6c48c30e5011f1a67b4ba4dc8abbce.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

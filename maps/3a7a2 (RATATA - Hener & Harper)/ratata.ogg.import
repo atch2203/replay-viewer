@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dh24mriuw3ycd"
+path="res://.godot/imported/ratata.ogg-847d0387b684cd82f2e75f637903631f.oggvorbisstr"
+
+[deps]
+
+source_file="res://maps/3a7a2 (RATATA - Hener & Harper)/ratata.ogg"
+dest_files=["res://.godot/imported/ratata.ogg-847d0387b684cd82f2e75f637903631f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

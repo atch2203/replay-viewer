@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://btasru07j4feg"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_hv5hj"]
+[ext_resource type="ArrayMesh" uid="uid://cdxlwys7lvbh7" path="res://models/bomb.obj" id="2_8s621"]
+[ext_resource type="PackedScene" uid="uid://46wkdktbgqox" path="res://gameobjects/bomb.tscn" id="2_nunus"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_hv5hj")
+BombScene = ExtResource("2_nunus")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.955175, -0.296041, 0, 0.296041, 0.955175, 0, 0, 0, 1, -1.56597, -1.4641, 0.250331)
+mesh = ExtResource("2_8s621")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.197897, 0, -0.980223, 0, 1, 0, 0.980223, 0, 0.197897, -0.549217, 0.371563, 0.849176)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.140003, 0.990151, 0, -0.990151, -0.140003, -0.220092, 2.21947, -0.0541251)
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

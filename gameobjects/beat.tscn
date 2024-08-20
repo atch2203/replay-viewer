@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvecjl77wvuys"]
+
+[ext_resource type="Script" path="res://gameobjects/Beat.cs" id="1_nut82"]
+[ext_resource type="ArrayMesh" uid="uid://hrv235snev2g" path="res://models/beat.obj" id="2_hi2hy"]
+[ext_resource type="ArrayMesh" uid="uid://bcps6w7qwces5" path="res://models/arrow.obj" id="3_o5vbh"]
+[ext_resource type="ArrayMesh" uid="uid://d0pxmf4dw3abn" path="res://models/dot.obj" id="4_35yn3"]
+
+[node name="Beat" type="StaticBody3D"]
+script = ExtResource("1_nut82")
+
+[node name="Beat" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_hi2hy")
+
+[node name="Arrow" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_o5vbh")
+
+[node name="Dot" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_35yn3")

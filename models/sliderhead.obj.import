@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c37mg47osh6iv"
+path="res://.godot/imported/sliderhead.obj-86adc26a5d809934ed1d1573ea1981bb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sliderhead.obj-86adc26a5d809934ed1d1573ea1981bb.mesh"]
+
+source_file="res://models/sliderhead.obj"
+dest_files=["res://.godot/imported/sliderhead.obj-86adc26a5d809934ed1d1573ea1981bb.mesh", "res://.godot/imported/sliderhead.obj-86adc26a5d809934ed1d1573ea1981bb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

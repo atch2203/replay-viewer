@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://djqveuxrmfvwl"
+path="res://.godot/imported/backglow.obj-f1668330e3cf404da5b169a912e9976e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/backglow.obj-f1668330e3cf404da5b169a912e9976e.mesh"]
+
+source_file="res://models/backglow.obj"
+dest_files=["res://.godot/imported/backglow.obj-f1668330e3cf404da5b169a912e9976e.mesh", "res://.godot/imported/backglow.obj-f1668330e3cf404da5b169a912e9976e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
