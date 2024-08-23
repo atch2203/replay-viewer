@@ -10,19 +10,25 @@ using static MapInfo;
 public static class JsonReader {
 
   private static Regex versionRegex = new Regex("version\": ?\"(\\d\\.\\d\\.\\d)\"", RegexOptions.Compiled);
-  private static readonly JsonSerializerOptions options = new JsonSerializerOptions{IncludeFields = true};
+  public static readonly JsonSerializerOptions options = new JsonSerializerOptions{IncludeFields = true};
 
-  public static Regex VersionRx = new Regex(@"version""\s*:\s*""(\d\.?)*", RegexOptions.Compiled);
   public static string readFile(string filename) {
     using FileAccess file = FileAccess.Open(filename, FileAccess.ModeFlags.Read);
     string content = file.GetAsText();
     return content;
   }
 
+
+
   public static MapFolder makeMapFolder(string folder){
     MapFolder mapFolder = new MapFolder{
       mapInfo = parseMapInfo(readFile($"{folder}/Info.dat"))
     };
+    foreach(MapInfo.DifficultyBeatmap difficultyBeatmap in mapFolder.mapInfo.difficultyBeatmaps){
+      difficultyBeatmap.map = parseBeatMap(readFile($"{folder}/{difficultyBeatmap.beatmapDataFilename}"));
+      difficultyBeatmap.bpm = mapFolder.mapInfo.audio.bpm;
+    }
+    // GD.Print(mapFolder.mapInfo.difficultyBeatmaps[0].map);
     return mapFolder;
   }
 

@@ -17,7 +17,8 @@ public class BeatMap{ //TODO lightshow https://bsmg.wiki/mapping/map-format/ligh
   }
 
   public class Note: Object{
-    public int c, d;
+    public SaberColor c;
+    public CutDirection d;
     public float a;
   }
 
@@ -29,7 +30,9 @@ public class BeatMap{ //TODO lightshow https://bsmg.wiki/mapping/map-format/ligh
   }
 
   public class Slider: Object{
-    public int c, d, m;
+    public SaberColor c;
+    public CutDirection d;
+    public int m;
     public float mu, tmu;
     public float tb;
     public int tx, ty;
@@ -37,7 +40,8 @@ public class BeatMap{ //TODO lightshow https://bsmg.wiki/mapping/map-format/ligh
   }
 
   public class Chain: Object{
-    public int c, d;
+    public SaberColor c;
+    public CutDirection d;
     public float tb;
     public int tx, ty;
     public int sc;
@@ -56,7 +60,7 @@ public class BeatMap{ //TODO lightshow https://bsmg.wiki/mapping/map-format/ligh
 
 
   public enum SaberColor{LEFT=0,RIGHT=1}
-  public enum CutDirection{UP=0,DOWN=1,LEFT=2,RIGHT=3,UPLEFT=4,UPRIGHT=5,DONWLEFT=6,DONWRIGHT=7,ANY=8}
+  public enum CutDirection{UP=0,DOWN=1,LEFT=2,RIGHT=3,UPLEFT=4,UPRIGHT=5,DOWNLEFT=6,DOWNRIGHT=7,ANY=8}
 
   public class BeatMapv4{ // todo? use this  https://converter.stormpacer.xyz/
 
@@ -178,8 +182,8 @@ public class BeatMap{ //TODO lightshow https://bsmg.wiki/mapping/map-format/ligh
         b=n._time,
         x=n._lineIndex,
         y=n._lineLayer,
-        c=n._cutDirection,
-        d=n._cutDirection,
+        c=(SaberColor)n._type,
+        d=(CutDirection)n._cutDirection,
         a=0
       }).ToArray();
 
@@ -193,11 +197,11 @@ public class BeatMap{ //TODO lightshow https://bsmg.wiki/mapping/map-format/ligh
 
       BeatMap.Slider[] sliders = _sliders is null ? null : _sliders
       .Select(s => new BeatMap.Slider{
-        c=s._colorType,
+        c=(SaberColor)s._colorType,
         b=s._headTime,
         x=s._headLineIndex,
         y=s._headLineLayer,
-        d=s._headCutDirection,
+        d=(CutDirection)s._headCutDirection,
         mu=s._headControlPointLengthMultiplier,
         tb=s._tailTime,
         tx=s._tailLineIndex,

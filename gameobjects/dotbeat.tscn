@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://l01v40lg5ul4"]
+
+[ext_resource type="ArrayMesh" uid="uid://hrv235snev2g" path="res://models/beat.obj" id="1_pv8b2"]
+[ext_resource type="ArrayMesh" uid="uid://d0pxmf4dw3abn" path="res://models/dot.obj" id="3_wdfl8"]
+
+[node name="DotBeat" type="StaticBody3D"]
+
+[node name="Beat" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_pv8b2")
+
+[node name="Dot" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("3_wdfl8")
