@@ -17,7 +17,6 @@ material_override = SubResource("StandardMaterial3D_6greg")
 mesh = ExtResource("2_hi2hy")
 
 [node name="Arrow" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 layers = 2
 mesh = ExtResource("3_o5vbh")
 surface_material_override/0 = SubResource("StandardMaterial3D_wqkjo")

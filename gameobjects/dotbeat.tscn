@@ -9,5 +9,4 @@
 mesh = ExtResource("1_pv8b2")
 
 [node name="Dot" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = ExtResource("3_wdfl8")

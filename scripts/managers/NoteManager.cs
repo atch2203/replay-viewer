@@ -10,8 +10,8 @@ public partial class NoteManager: StaticBody3D{
   }
 
 
-  public void update(Frame f){
-    PositionData res = singleNoteMovementManager.updatePosition(f, Position, Quaternion.FromEuler(Rotation));
+  public void update(float time, float headX=0, float headY=1.7F, float headZ=0){
+    PositionData res = singleNoteMovementManager.updatePosition(time, new Vector3(headX, headY, headZ), Position, Quaternion.FromEuler(Rotation));
     Position = res.position;
     Rotation = res.rotation.GetEuler();
   }

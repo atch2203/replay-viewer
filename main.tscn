@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://btasru07j4feg"]
+[gd_scene load_steps=3 format=3 uid="uid://btasru07j4feg"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_ekkwu"]
+[ext_resource type="ArrayMesh" uid="uid://c2vbhhtxcdp2q" path="res://models/quest.obj" id="2_bic1u"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ekkwu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.955452, 0.122914, -0.268337, -0.0200442, 0.880039, 0.474479, 0.294467, 0.45872, -0.838371, -0.549217, 0.371563, 0.849176)
+transform = Transform3D(0.999109, -6.70552e-08, 0.0422071, -0.0200442, 0.880039, 0.474479, -0.037144, -0.474901, 0.879255, -0.549217, 0.371563, 0.849176)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 3)
+
+[node name="Quest" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_bic1u")
