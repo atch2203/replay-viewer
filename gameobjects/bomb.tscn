@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://46wkdktbgqox"]
+[gd_scene load_steps=3 format=3 uid="uid://46wkdktbgqox"]
 
+[ext_resource type="Script" path="res://scripts/objects/BombObject.cs" id="1_n1yd0"]
 [ext_resource type="ArrayMesh" uid="uid://cdxlwys7lvbh7" path="res://models/bomb.obj" id="2_vmdqe"]
 
 [node name="Bomb" type="StaticBody3D"]
+script = ExtResource("1_n1yd0")
 
 [node name="Bomb" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_vmdqe")

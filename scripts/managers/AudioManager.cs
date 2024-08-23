@@ -1,18 +1,17 @@
 using Godot;
 
-public partial class AudioManager: AudioStreamPlayer{
+public partial class SongManager: AudioStreamPlayer{
 
   public float speed;
   public AudioEffectPitchShift shift;
 
-  public AudioManager(string songfile){
+  public SongManager(string songfile){
 		this.Stream = ResourceLoader.Load(songfile) as AudioStream;
 		shift = new AudioEffectPitchShift();
 		AudioServer.AddBus(1);
 		AudioServer.SetBusName(1, "Song");
 		AudioServer.AddBusEffect(1, shift);
 		this.Bus = "Song";
-    setSpeed(1F);
   }
 
   public void setSpeed(float f){

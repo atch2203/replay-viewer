@@ -18,8 +18,6 @@ public static class JsonReader {
     return content;
   }
 
-
-
   public static MapFolder makeMapFolder(string folder){
     MapFolder mapFolder = new MapFolder{
       mapInfo = parseMapInfo(readFile($"{folder}/Info.dat"))
@@ -28,7 +26,6 @@ public static class JsonReader {
       difficultyBeatmap.map = parseBeatMap(readFile($"{folder}/{difficultyBeatmap.beatmapDataFilename}"));
       difficultyBeatmap.bpm = mapFolder.mapInfo.audio.bpm;
     }
-    // GD.Print(mapFolder.mapInfo.difficultyBeatmaps[0].map);
     return mapFolder;
   }
 

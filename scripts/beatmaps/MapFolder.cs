@@ -7,8 +7,6 @@ using Godot;
 using Godot.Collections;
 
 public partial class MapFolder {
-  // [JsonInclude]
-  // public System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary> beatmaps;
   [JsonInclude]
   public MapInfo mapInfo;
   [JsonInclude]

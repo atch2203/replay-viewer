@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvecjl77wvuys"]
+
+[ext_resource type="Script" path="res://scripts/objects/NoteObject.cs" id="1_qhlhw"]
+[ext_resource type="ArrayMesh" uid="uid://hrv235snev2g" path="res://models/beat.obj" id="2_jv4v5"]
+[ext_resource type="ArrayMesh" uid="uid://bcps6w7qwces5" path="res://models/arrow.obj" id="3_uxiln"]
+[ext_resource type="ArrayMesh" uid="uid://d0pxmf4dw3abn" path="res://models/dot.obj" id="4_1tfi6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6greg"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqkjo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqmso"]
+
+[node name="ArrowBeat" type="StaticBody3D"]
+script = ExtResource("1_qhlhw")
+
+[node name="Beat" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_6greg")
+mesh = ExtResource("2_jv4v5")
+
+[node name="Arrow" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = ExtResource("3_uxiln")
+surface_material_override/0 = SubResource("StandardMaterial3D_wqkjo")
+
+[node name="Dot" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_aqmso")
+mesh = ExtResource("4_1tfi6")

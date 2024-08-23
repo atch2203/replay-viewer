@@ -31,18 +31,27 @@ public class MapInfo {
     }
     public BeatMap map;
     public float bpm;
+    public float hjd = -1, njd = -1;
     
     public float getHJD(){
+      if(hjd != -1) return hjd;
       float hj = 4F;//just a coefficient
       float n = 60.0F/bpm; // seconds/beat
       while(noteJumpMovementSpeed*n*hj > 18.0F) hj /= 2.0F; // checks whether distance/beat is too high
       hj += noteJumpStartBeatOffset;
       if(hj < 0.25F) hj = 0.25F;
+      hjd = hj;
       return hj;
     }
 
     public float getNJD(){
-      return noteJumpMovementSpeed * getHJD() * 60.0F / bpm;
+      // if(njd != -1) return njd;
+      njd = noteJumpMovementSpeed * getHJD() * 60.0F / bpm;
+      return njd;
+    }
+    
+    public float getJumpDuration(){
+      return getHJD() * 60F / bpm;
     }
   }
   public struct ColorScheme {
