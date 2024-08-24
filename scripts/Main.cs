@@ -23,9 +23,7 @@ public partial class Main : Node3D {
 
 	public override void _Ready() {
 		headset = GetNode("Quest") as Node3D;
-		headset.Position = new Vector3(0, 1.5F, 0);
-		// headset.QueueFree();
-		// RemoveChild(headset);
+		headset.Position = new Vector3(0, 1.7F, 0);
 
 		b = JsonReader.makeMapFolder("C:\\Users\\atch2\\Documents\\ReplayViewer\\maps\\298b5 (Last Wish - BSWC Team)");
 
@@ -34,12 +32,9 @@ public partial class Main : Node3D {
 		UI.initializeTimeManager(timeManager);
 		UI.initializeAudio("res://maps/298b5 (Last Wish - BSWC Team)/song.ogg");
 		UI.songManager.setSpeed(1F);
-		GD.Print(b.mapInfo.difficultyBeatmaps[3].getHJD());
-		b.mapInfo.difficultyBeatmaps[3].hjd = 3;
-		previewer = new Previewer(b.mapInfo.difficultyBeatmaps[3]);
+		b.mapInfo.difficultyBeatmaps[4].hjd = 3;
+		previewer = new Previewer(b.mapInfo.difficultyBeatmaps[4]);
 		AddChild(previewer);
-
-		// using Task<Replay> fetcher = ReplayLoader.ReplayFromDirectory("C:\\Users\\atch2\\Documents\\ReplayViewer\\maps\\76561198246352688-Last Wish-Expert-Standard-C86336B3CA84CD03BC3995FADFD7CFDDE2FD00C0-1723756781.bsor");
 
 		r = ReplayDecoder.Decode(File.ReadAllBytes("C:\\Users\\atch2\\Documents\\ReplayViewer\\maps\\76561198246352688-Last Wish-Expert-Standard-C86336B3CA84CD03BC3995FADFD7CFDDE2FD00C0-1723756781.bsor"));
 
@@ -50,7 +45,7 @@ public partial class Main : Node3D {
 		if (isReplayMode) {
 			t += (float)delta / 3;
 			while(r.frames[frame].time < t) frame++;
-			GD.Print($"frametime {r.frames[frame].time} time {t}");
+			// GD.Print($"frametime {r.frames[frame].time} time {t}");
 			// noteObj.update(r.frames[frame].time);
 		}else{
 			previewer.goTo(timeManager.time);
@@ -68,6 +63,7 @@ public partial class Main : Node3D {
 		}
 		if(Input.IsKeyPressed(Key.Minus)){
 			speed -= 0.1F;
+			if(speed < 0.1F) speed = 0.1F;
 			UI.songManager.setSpeed(speed);
 		}
 	}

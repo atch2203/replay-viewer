@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using Godot;
 using static BeatMap;
 
-public class MovementCalculator { //TODO clean this up
-  public MapInfo.DifficultyBeatmap difficultyBeatmap;
-  public BeatMap.Object obj;
+public class NoteBombMovement : ObjectMovement { //TODO clean this up
   public MovementData movementData;
 
   // credit to [NSGolova](https://github.com/NSGolova) for these values + outline for position/movement code
@@ -33,9 +31,6 @@ public class MovementCalculator { //TODO clean this up
     [CutDirection.DOWNLEFT] = 315F,
     [CutDirection.ANY] = 180F
   };
-  public static float REPLAY_HEIGHT { get; set; } = 1.7F;
-
-  public const float SWORD_OFFSET = 0.9F;
 
   public static Vector3[] RANDOM_ROTATIONS = {
   new Vector3(deg2rad(-0.954387F), deg2rad(-0.1183784F), deg2rad(0.2741019F)),
@@ -52,8 +47,6 @@ public class MovementCalculator { //TODO clean this up
   public static int NUM_RANDOM_ROTATIONS = RANDOM_ROTATIONS.Length;
 
   bool rotateTowardPlayer = true;
-  Quaternion worldRot = new Quaternion(0, 0, 0, 1), inverseWorldRot = new Quaternion(0, 0, 0, 1), worldPlayerRot = new Quaternion(0, 0, 0, 1);
-  static float endDistOffset = 500;
   #endregion
 
   #region unchanging vars
@@ -61,7 +54,7 @@ public class MovementCalculator { //TODO clean this up
   Quaternion startRotation, midRotation, endRotation;
   #endregion
 
-  public MovementCalculator(MapInfo.DifficultyBeatmap difficultyBeatmap, BeatMap.Object note) {
+  public NoteBombMovement(MapInfo.DifficultyBeatmap difficultyBeatmap, BeatMap.Object note) {
     if (note is Bomb) rotateTowardPlayer = false;
 
     this.difficultyBeatmap = difficultyBeatmap;
@@ -86,30 +79,7 @@ public class MovementCalculator { //TODO clean this up
 
   }
 
-  #region mathfuncs
-  public static float lerp(float start, float end, float t) {
-    if (t < 0) return start;
-    if (t > 1) return end;
-    return start + (end - start) * t;
-  }
-  public static float lerpUnclamped(float start, float end, float t) {
-    return start + (end - start) * t;
-  }
-  public static float quadInOut(float t) {
-    if (t < 0.5) return 2 * t * t;
-    return (4 - 2 * t) * t - 1;
-  }
-  public static float clamp(float v, float min, float max) {
-    if (v < min) return min;
-    if (v > max) return max;
-    return v;
-  }
-  public static float deg2rad(float d) {
-    return (float)(Math.PI * d / 180);
-  }
-  #endregion
-
-  public PositionData updatePosition(float time, Vector3 frameHeadPos, Vector3 curPos, Quaternion curRot) {
+  public override PositionData updatePosition(float time, Vector3 frameHeadPos, Vector3 curPos, Quaternion curRot) {
     PositionData positionData = new PositionData { rotation = new Quaternion(0, 0, 0, 1) };
     //floor movement
     float relativeMoveTime = time - moveStartTime;
@@ -196,24 +166,6 @@ public class MovementCalculator { //TODO clean this up
   }
   #endregion
 
-  #region positionutils
-  private Quaternion lookingAt(Vector3 forward, Vector3 up) {
-    Quaternion c = Transform3D.Identity.LookingAt(forward, up).Basis.GetRotationQuaternion();
-    Quaternion d = new Quaternion(-c.Z, c.W, c.X, -c.Y);
-    return c;
-  }
-  private float moveTowardHead(float start, float end, Quaternion invWorldRot, float jumpPercent, Vector3 headPos) {
-    float headOffsetZ = rotate(headPos, invWorldRot).Z; //usually negligible
-    return lerpUnclamped(start + headOffsetZ * Math.Min(1, jumpPercent * 2), end + headOffsetZ, jumpPercent);
-  }
-  private static Vector3 rotate(Vector3 v, Quaternion q) {
-    Quaternion quatForm = q * new Quaternion(v.X, v.Y, v.Z, 0) * q.Inverse();
-    return new Vector3(quatForm.X, quatForm.Y, quatForm.Z);
-  }
-  #endregion
-
-
-
   public class MovementData {
     public const float MOVE_TIME = 0.5F, MOVE_SPEED = 100, Z_OFFSET = -0.25F;
     public static Vector3 CENTER = new Vector3(0, 0, -0.65F);
@@ -222,13 +174,13 @@ public class MovementCalculator { //TODO clean this up
     public Vector3 jumpEnd, moveEnd, moveStart;
 
     public MovementData(MapInfo.DifficultyBeatmap difficultyBeatmap, BeatMap.Object note) {
-      if (!(note is Note || note is Bomb)) throw new System.Exception("Only notes and bombs are allowed here");
+      if (!(note is BeatMap.Note || note is Bomb)) throw new System.Exception("Only notes and bombs are allowed here");
 
       // float njs = difficultyBeatmap.noteJumpMovementSpeed; // in njs???
       // float time = note.b * 60F / difficultyBeatmap.bpm; // in seconds
       jumpDuration = difficultyBeatmap.getHJD() * 60F / difficultyBeatmap.bpm; // in seconds
       float jumpDistance = difficultyBeatmap.getNJD();
-      GD.Print(jumpDistance);
+      // GD.Print(jumpDistance);
       moveDistance = MOVE_TIME * MOVE_SPEED;
       int yBeforeJump = 0;
 
@@ -239,16 +191,16 @@ public class MovementCalculator { //TODO clean this up
       jumpOffsetY = getYHeightOffset(REPLAY_HEIGHT);
       Vector3 jumpOffset = new Vector3(getXOffset(note.x), yBeforeJump, Z_OFFSET);
       jumpEnd += jumpOffset;
-      if (note is Note) {
-        Vector3 moveOffset = new Vector3(getXOffset(note.x), yBeforeJump, Z_OFFSET);
-        moveStart += moveOffset;
-        moveEnd += moveOffset;
+      if (note is BeatMap.Note) {
+                Vector3 moveOffset = new Vector3(getXOffset(note.x), yBeforeJump, Z_OFFSET);
+                moveStart += moveOffset;
+                moveEnd += moveOffset;
       } else {
-        moveStart += jumpOffset;
-        moveEnd += jumpOffset;
+                moveStart += jumpOffset;
+                moveEnd += jumpOffset;
       }
 
-      if (note is Note n) endRotation = deg2rad(ROTATION_ANGLE[n.d] + n.a);
+      if (note is BeatMap.Note n) endRotation = deg2rad(ROTATION_ANGLE[n.d] + n.a);
       else if (note is Bomb b) endRotation = 0;
 
       jumpGravity = getGravity(note.y, yBeforeJump);

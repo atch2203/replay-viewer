@@ -53,6 +53,13 @@ public class MapInfo {
     public float getJumpDuration(){
       return getHJD() * 60F / bpm;
     }
+
+    public float getNoteBombMoveTime(float beat){
+      return beat * 60F / bpm - NoteBombMovement.MovementData.MOVE_TIME - getJumpDuration() / 2F;
+    }
+    public float getNoteBombJumpEnd(float beat){
+      return beat * 60F / bpm + getJumpDuration() / 2F;
+    }
   }
   public struct ColorScheme {
     public bool useOverride;
